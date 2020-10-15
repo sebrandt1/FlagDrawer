@@ -26,7 +26,11 @@ namespace FlagDrawer
                 FlagDirection direction = FlagDirection.None;
                 if(flagType != FlagType.Cross)
                 {
-                    direction = (FlagDirection)Menu.ShowMenu("What direction should the flag be?", Enum.GetNames(typeof(FlagDirection)));
+                    direction = (FlagDirection)Menu.ShowMenu("What direction should the flag be?", new string[]
+                        {
+                            "Horizontal",
+                            "Vertical"
+                        });
                 }
 
                 Console.Clear();
