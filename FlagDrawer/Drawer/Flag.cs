@@ -10,11 +10,13 @@ namespace FlagDrawer.Drawer
     public abstract class Flag
     {
         //Width should be larger than height to get a laying rectangular flag
+        //Protected accessor since we want to access them in all inheriting classes
         protected int Width => Height * 2;
         protected int Height { get; set; }
         protected FlagDirection Type { get; set; }
         protected ConsoleColor[] Colors { get; set; }
 
+        //Possibly want to override this in more complex flag inheritors
         public virtual void DrawFlag()
         {
             switch(this.Type)
@@ -108,6 +110,7 @@ namespace FlagDrawer.Drawer
             }
         }
 
+        //Use this to adjust the flag scale for even color distribution
         protected virtual void AdjustProperDimensions()
         {
             while (!(this.Height % 2 == 0))
