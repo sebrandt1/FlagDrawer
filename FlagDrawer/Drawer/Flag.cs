@@ -10,7 +10,7 @@ namespace FlagDrawer.Drawer
     public abstract class Flag
     {
         //Width should be larger than height to get a laying rectangular flag
-        //Protected accessor since we want to access them in all inheriting classes
+        //Protected accessor since we want to access them in inheriting classes but never outside
         protected int Width => Height * 2;
         protected int Height { get; set; }
         protected FlagDirection Type { get; set; }
@@ -73,8 +73,8 @@ namespace FlagDrawer.Drawer
         //So 2 blocks of a 6x vertical flag will have 3x of color x on left side and 3x of color y on right side
         private void Draw(int blocks, int index)
         {
-            if (index < blocks * 1) Console.BackgroundColor = this.Colors[0];
-            else if (index >= blocks * 1 && index < blocks * 2) Console.BackgroundColor = this.Colors[1];
+            if (index < blocks) Console.BackgroundColor = this.Colors[0];
+            else if (index >= blocks && index < blocks * 2) Console.BackgroundColor = this.Colors[1];
 
             //if this instance is TriColorFlag we have an expected 3rd color which should be set on the 3rd block
             if (this is TriColorFlag)
