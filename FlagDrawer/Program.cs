@@ -78,6 +78,7 @@ namespace FlagDrawer
                 Console.Clear();
             }
         }
+
         public static ConsoleColor[] AskForColors(int colors)
         {
             ConsoleColor[] result = new ConsoleColor[colors];

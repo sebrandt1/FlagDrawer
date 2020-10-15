@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace FlagDrawer.Drawer
 {
+    //abstract class to inherit to each kind of flag object
     public abstract class Flag
     {
         //Width should be larger than height to get a laying rectangular flag
-        protected virtual int Width => Height * 2;
-        protected virtual int Height { get; set; }
-        protected virtual FlagDirection Type { get; set; }
-        protected virtual ConsoleColor[] Colors { get; set; }
+        protected int Width => Height * 2;
+        protected int Height { get; set; }
+        protected FlagDirection Type { get; set; }
+        protected ConsoleColor[] Colors { get; set; }
 
         public virtual void DrawFlag()
         {
@@ -35,7 +36,7 @@ namespace FlagDrawer.Drawer
         }
 
         //only change color on correct Y-axis block
-        protected virtual void DrawHorizontalFlag()
+        protected void DrawHorizontalFlag()
         {
             AdjustProperDimensions();
             int blocks = CalculateBlocks();
@@ -51,7 +52,7 @@ namespace FlagDrawer.Drawer
         }
         
         //only change color on correct X-axis block
-        protected virtual void DrawVerticalFlag()
+        protected void DrawVerticalFlag()
         {
             AdjustProperDimensions();
             int blocks = CalculateBlocks();
